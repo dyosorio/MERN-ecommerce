@@ -31,8 +31,8 @@
    - import the rating component
    - use the high order array method .find() in products, so for each product you match the product id to the id that has been passed in the URL.
 
-   > The video tutorial suggests using prop.match to get the URL id, I use useParams instead.
-   > In ProductPage I implemented useHistory on a 'go back' button, through an onClick event; instead of using Link to '/' which would always take you to the homepage instead of going back to the previous page.
+   > <mark>The video tutorial suggests using prop.match to get the URL id, I use useParams instead.</mark> >
+   > <mark>In ProductPage I implemented useHistory on a 'go back' button, through an onClick event; instead of using Link to '/' which would always take you to the homepage instead of going back to the previous page.</mark>
 
 ## Serving and Fetch Data from Express
 
