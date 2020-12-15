@@ -39,6 +39,7 @@
 ## Serving and Fetch Data from Express
 
 7. Serving products from the backend
+
    - we'll move the products.js file to the backend
    - create a folder in the root called backend
    - npm init a package.json in the root folder
@@ -48,4 +49,19 @@
      on the frontend we used import syntax which is ES modules
      on server.js we'll use common js (require) to import the express module
    - in the copied file data/products.js change the export default syntax from ES modules to the common js syntax: module.exports = products
-   - create three app.get requests: '/', 'api/products', and 'api/products/:id'
+   - create three app.get requests: '/', '/api/products', and '/api/products/:id'
+
+8. Fetching products from React (video 12)
+   - We'll fetch the products from our routs in the backend 'api/products'
+   - Go to Homepage and add products as component level state. Products will be global state when we get into Redux
+   - in Homepage useState [products, setProducts], delete the line that imports the products.js file from fronted
+   - import { useEffect } to make a request to our backend
+   - To avoid a CORS error, we'll add a proxy so our fetch request will be done from 'http://localhost:5000/api/products/3' instead of trying to fetch from localhost:3000
+   - go to frontend/package.json and add the following line under the "name':
+     "proxy" : "http://127.0.0.1:5000"
+     server 5000 needs to be running for the fetch api to get the data
+   - Do the same in the ProductPage to fetch the product/:id
+     - lets get rid of import products from '../products'
+     - lets get rid of `const product = products.find((p) => p.\_id === id)` because we're going to be fetching in from the backend
+     - set a state [product, setProduct] = an empty object
+     - now we can delete the frontend/products.js file

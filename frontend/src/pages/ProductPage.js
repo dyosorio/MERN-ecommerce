@@ -1,17 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap'
 import { useParams, useHistory } from 'react-router'
 import Rating from '../components/Rating'
-import products from '../products'
 
 const ProductPage = () => {
   const { id } = useParams()
   const history = useHistory()
-  const product = products.find((p) => p._id === id)
+  const [product, setProduct] = useState({})
 
   function goBackHandle() {
     history.goBack()
   }
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const response = await fetch(`/api/products/${id}`)
+      const data = await response.json()
+      setProduct(data)
+    }
+    fetchProduct()
+  }, [])
 
   return (
     <>
