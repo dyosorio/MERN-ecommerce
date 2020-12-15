@@ -1,0 +1,22 @@
+{
+  "name": "mern-ecommerce",
+  "version": "1.0.0",
+  "description": "MERN shopping cart app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dyosorio/MERN-ecommerce.git"
+  },
+  "author": "Danny Osorio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dyosorio/MERN-ecommerce/issues"
+  },
+  "homepage": "https://github.com/dyosorio/MERN-ecommerce#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

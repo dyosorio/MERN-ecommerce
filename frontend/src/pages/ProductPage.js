@@ -1,16 +1,23 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap'
+import { useParams, useHistory } from 'react-router'
 import Rating from '../components/Rating'
 import products from '../products'
 
-const ProductPage = ({ match }) => {
-  const product = products.find((p) => p._id === match.params.id)
+const ProductPage = () => {
+  const { id } = useParams()
+  const history = useHistory()
+  const product = products.find((p) => p._id === id)
+
+  function goBackHandle() {
+    history.goBack()
+  }
+
   return (
     <>
-      <Link className='btn btn-light my-3' to='/'>
+      <button onClick={goBackHandle} className='btn btn-light my-3'>
         Go Back
-      </Link>
+      </button>
       <Row>
         <Col md={6}>
           <Image src={product.image} alt={product.name} fluid />
