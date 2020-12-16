@@ -2,11 +2,18 @@
 import express from 'express'
 //7.  import dotenv
 import dotenv from 'dotenv'
+//11.optional npm package colors
+import colors from 'colors'
+//9. import from db.js
+import connectDB from './config/db.js'
 //5. import products.js
 import products from './data/products.js'
 
 //8.  init dotenv
 dotenv.config()
+
+//10. connect to database
+connectDB()
 
 //2. init express with the variable called app
 const app = express()
@@ -34,5 +41,7 @@ const PORT = process.env.PORT || 5000
 //3. listen on a port
 app.listen(
   PORT,
-  console.log(`server running in ${process.env.NODE_ENV} mode on port ${PORT}`)
+  console.log(
+    `server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold
+  )
 )

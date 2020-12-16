@@ -104,4 +104,22 @@
 - open Compass, paste the connection string
   mongodb+srv://DannyAdmin:<password>@mernecommerce.lynsg.mongodb.net/test
   Change test to the name of the database, add the password and connect
-- On Atlas, Cluster, Connect
+- On Atlas, Cluster, Connect, Connect your application. Copy the connection string and put inside a variable on the .env file
+
+13. Connecting to the Database
+
+- we're going to use Moongose. Which is object modeling for Nodejs. It allows us to create a model and a schema for different resources on our database (products, users, etc)
+- npm i mongoose in the root folder
+- in backend create a folder called config, create a file called db.js
+- in db.js import mongoose and connect to the db using the MONGO_URI connection string we saved in .env
+- import db.js to server.js. Remember to add .js when importing in the backend
+- npm i colors, optional package to add style to the db.js console messages
+  remember npm run server to run the backend only
+
+14. Modeling our Data (video 19):
+
+- In the backend, create a folder called models
+- we're going to have three models: users, products and orders
+- userModel.js : import mongoose, create schema, create a model named 'User' from the schema userSchema.Export default User
+- productModel: add a user field to the productSchema, because we want to know which Admin created which product, so we need to have an object id. Reference the model 'User' to this object id, with this we created a relationship between the product and the user. In the same Model add a reviewSchema to be used as reviews in the productSchema
+- orderModel: we need a user connected to the order,
