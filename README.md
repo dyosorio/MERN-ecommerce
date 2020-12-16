@@ -52,6 +52,7 @@
    - create three app.get requests: '/', '/api/products', and '/api/products/:id'
 
 8. Fetching products from React (video 12)
+
    - We'll fetch the products from our routs in the backend 'api/products'
    - Go to Homepage and add products as component level state. Products will be global state when we get into Redux
    - in Homepage useState [products, setProducts], delete the line that imports the products.js file from fronted
@@ -60,14 +61,47 @@
    - go to frontend/package.json and add the following line under the "name':
      "proxy" : "http://127.0.0.1:5000"
      server 5000 needs to be running for the fetch api to get the data
-   - Do the same in the ProductPage to fetch the product/:id
-     - lets get rid of import products from '../products'
-     - lets get rid of `const product = products.find((p) => p.\_id === id)` because we're going to be fetching in from the backend
-     - set a state [product, setProduct] = an empty object
-     - now we can delete the frontend/products.js file
+   - Do the same in the ProductPage to fetch the product/:id - lets get rid of import products from '../products' - lets get rid of `const product = products.find((p) => p.\_id === id)` because we're going to be fetching in from the backend - set a state [product, setProduct] = an empty object - now we can delete the frontend/products.js file
+     💡 important:
+
+   > I used the fetch API instead of the axios library
+
 9. Nodemon and Concurrently setup
    - npm i -D nodemon concurrently (-D to install as dev dependencies because we only need those for development)
    - on scripts, under "start" add the following scripts:
      "server": "nodemon backend/server",
      "client": "npm start --prefix frontend"
      "dev": "concurrently \"npm run server\" \"npm run client\""
+     use npm run dev as is will run both node and react
+10. Environment variables
+
+- We're going to use the dotenv package: npm i dotenv
+- go to server.js
+- in the root create the .env file, this is where we can define any env variables
+- make sure the .env file is added to .gitignore
+
+11. Convert the server common js syntax(require / module.exports) in Node to ES module syntax(import / export default) - video 15
+
+- add a type module in the root package.json. Under "main" : "server.js"
+  // package.json
+  {
+  "type": "module"
+  }
+- change the syntax. Make sure you .js to the file names when importing files in the backend
+- change back export syntax in data/products.js
+
+## MongoDB
+
+12. MongoDB Atlas & Compass setup (video 16)
+
+- signing to MongoDB Atlas
+- create a new project
+- create a new Cluster
+- go to Security, Database access and add new user that can read and write to any database
+- under network access add ip address
+- Clusters, Collections, add my own data. Add a Database name and a collection name of products
+- Clusters, Connect, click on Connect using MongoDB Compass. Click on I have MongoDB Compass and Copy the connection string
+- open Compass, paste the connection string
+  mongodb+srv://DannyAdmin:<password>@mernecommerce.lynsg.mongodb.net/test
+  Change test to the name of the database, add the password and connect
+- On Atlas, Cluster, Connect
