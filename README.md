@@ -65,3 +65,9 @@
      - lets get rid of `const product = products.find((p) => p.\_id === id)` because we're going to be fetching in from the backend
      - set a state [product, setProduct] = an empty object
      - now we can delete the frontend/products.js file
+9. Nodemon and Concurrently setup
+   - npm i -D nodemon concurrently (-D to install as dev dependencies because we only need those for development)
+   - on scripts, under "start" add the following scripts:
+     "server": "nodemon backend/server",
+     "client": "npm start --prefix frontend"
+     "dev": "concurrently \"npm run server\" \"npm run client\""
