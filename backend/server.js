@@ -1,44 +1,51 @@
-//1. import express module
+//step 1. import express module
 import express from 'express'
-//7.  import dotenv
+//step 7.  import dotenv
 import dotenv from 'dotenv'
-//11.optional npm package colors
+//step 11.optional npm package colors
 import colors from 'colors'
-//9. import from db.js
+//step 9. import from db.js
 import connectDB from './config/db.js'
-//5. import products.js
-import products from './data/products.js'
+//step 5. get rid of this step after importing productRoutes
+//import products from './data/products.js'
+//step 12. import productRoutes
+import productRoutes from './routes/productRoutes.js'
 
-//8.  init dotenv
+//step 8.  init dotenv
 dotenv.config()
 
-//10. connect to database
+//step 10. connect to database
 connectDB()
 
-//2. init express with the variable called app
+//step 2. init express with the variable called app
 const app = express()
 
-//4.  get request
+//step 4.  get request
 app.get('/', (req, res) => {
   res.send('API is running...')
 })
 
-//4.  get request to serve the data from products.js
+//step 13. mount it, for anything that goes to '/api/products' it is going to be link to productRoutes
+app.use('/api/products', productRoutes)
+/*
+This was cut out and paste into productRoutes.js
+//step 4.  get request to serve the data from products.js
 app.get('/api/products', (req, res) => {
   res.json(products)
 })
 
-//6. create a route to get a single product by its id
-// math the requested param id with an id inside the products data
+//step 6. create a route to get a single product by its id
+// match the requested param id with an id inside the products data
 app.get('/api/products/:id', (req, res) => {
   const product = products.find((p) => p._id === req.params.id)
   res.json(product)
 })
+*/
 
 //bring the PORT # from the .env file
 const PORT = process.env.PORT || 5000
 
-//3. listen on a port
+//step 3. listen on a port
 app.listen(
   PORT,
   console.log(

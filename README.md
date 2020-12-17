@@ -123,3 +123,40 @@
 - userModel.js : import mongoose, create schema, create a model named 'User' from the schema userSchema.Export default User
 - productModel: add a user field to the productSchema, because we want to know which Admin created which product, so we need to have an object id. Reference the model 'User' to this object id, with this we created a relationship between the product and the user. In the same Model add a reviewSchema to be used as reviews in the productSchema
 - orderModel: we need a user connected to the order,
+
+15. Prepared some data to be imported into our database
+
+- in the data/products.js file, get rid of all the \_id, because when data is enter into mongoDB this automatically creates a \_id field
+- inside data create a file called users.js, add an array with three users.
+- npm i bcryptjs // to encrypt the password. Import bcrypt into users.js
+
+16. Data seeder
+
+- create a data base seeder so we can import some sample data
+- in the backend folder create seeder.js.
+- import mongoose and dotenv, because we need the MONGO_URI, import users and products from data
+- import all three models, import connectDB and connect
+- create an importData function and a destroyData function
+- to import: node backend/seeder **DIDN'T UNDERSTAND THIS**
+- to destroy: node backend/seeder -d **DIDN'T UNDERSTAND THIS**
+- add scripts to json.package
+- open MongoDB Compass
+
+17. Fetching products from the database (video 22)
+
+- start to fetch products from the database
+- in the backend folder, create a folder called routes
+- create productRoutes.js, set up express
+- cut the /products and /products/:id routes from server.js and past it in productRoutes.js
+- import productRoutes into server.js
+- in server.js link '/api/products' with productRoutes
+- in productRoutes import the productModel
+- handle errors with npm i express-async-handler
+
+18. Getting started with Postman
+
+- In Postman, create a new collection for our API. This will be the shopping cart API
+- Add a folder for Products, for all routes that has to do with products
+  - add request for GET/api/products
+  - add an environment variable for the URL, with init value of http://localhost:5000. Now the get url in postman will be this {{URL}}/api/products, notice the env variable is wrap in double {}
+  - add request for GET/api/products/:id
