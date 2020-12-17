@@ -4,6 +4,8 @@ import express from 'express'
 import dotenv from 'dotenv'
 //step 11.optional npm package colors
 import colors from 'colors'
+//16. import middleware functions
+import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 //step 9. import from db.js
 import connectDB from './config/db.js'
 //step 5. get rid of this step after importing productRoutes
@@ -27,20 +29,12 @@ app.get('/', (req, res) => {
 
 //step 13. mount it, for anything that goes to '/api/products' it is going to be link to productRoutes
 app.use('/api/products', productRoutes)
-/*
-This was cut out and paste into productRoutes.js
-//step 4.  get request to serve the data from products.js
-app.get('/api/products', (req, res) => {
-  res.json(products)
-})
 
-//step 6. create a route to get a single product by its id
-// match the requested param id with an id inside the products data
-app.get('/api/products/:id', (req, res) => {
-  const product = products.find((p) => p._id === req.params.id)
-  res.json(product)
-})
-*/
+//15. fallback for Not Found 404 errors
+app.use(notFound)
+
+//14. error middleware
+app.use(errorHandler)
 
 //bring the PORT # from the .env file
 const PORT = process.env.PORT || 5000

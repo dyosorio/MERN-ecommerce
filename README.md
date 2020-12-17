@@ -160,3 +160,11 @@
   - add request for GET/api/products
   - add an environment variable for the URL, with init value of http://localhost:5000. Now the get url in postman will be this {{URL}}/api/products, notice the env variable is wrap in double {}
   - add request for GET/api/products/:id
+
+19. Custom error handling (video 24)
+
+- to create a custom error handler, we'll have to add a custom middleware (a function that has access to the request response cycles)
+- go to server.js and create an error middleware to pass a json message instead of html when getting 500 internal server error
+- add a fallback for 404 errors
+- in the backend, create a middleware folder
+- create a file called errorMiddleware.js copy and paste the 404 and error middleware, export and import into server.js
