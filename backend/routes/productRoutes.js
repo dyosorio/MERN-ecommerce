@@ -14,6 +14,7 @@ router.get(
   asyncHandler(async (req, res) => {
     //step 6
     const products = await Product.find({})
+
     res.json(products)
   })
 )

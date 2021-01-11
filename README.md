@@ -168,3 +168,39 @@
 - add a fallback for 404 errors
 - in the backend, create a middleware folder
 - create a file called errorMiddleware.js copy and paste the 404 and error middleware, export and import into server.js
+
+## Redux
+
+- in the frontend folder: npm i redux react-redux redux-thunk redux-devtools-extension
+- in the src folder: create your redux store.js file
+- go to index.js and import Provider from react-redux and wrap the <App /> in the Provider
+- in the backend folder: npm run dev to run de backend
+
+- in the src folder create a folder named reducers. Each resource of our app will have a reducer file such as products
+- productReducers.js will handle the product list
+- in store.js import productListReducer and add that state to the combineReducers through a productList. Now, refresh the page and check the redux-devtools and you'll see the productList in the state tab
+
+- in src create a new constant folder to store the switch cases strings
+  - create a productConst and import it to productReducers
+- in src create a folder called actions
+- inside actions: create productActions.js
+
+  > you'll start to notice this pattern: constant -> reducer -> action -> fire the action off in the component
+
+  - in productActions import the productConstants
+
+- Fire off the listProducts Action in the Home page:
+  - in Home: clear out the useEffect
+  - delete the products state. We don't need to set products as our local state anymore
+  - import useDispatch and useSelector from react-redux
+  - import listProducts from productActions
+- create the Message and Loader components
+
+- Product Detail Page:
+  Fetch state, create product details reducer, create actions, get the data in the component with useSelector and fire it off with useDispatch
+  - create details constants
+  - go to productReducer and create the productDetailsReducer
+  - add the productDetailsReducer to store.js
+  - create the action, we want to make a request to /api/products/id
+  - ProductPage: clear out the useEffect, import useDispatch and useSelector
+  - Now the details are coming through the server, down to redux and to the state to print out on our frontend
