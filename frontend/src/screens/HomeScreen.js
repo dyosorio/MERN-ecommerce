@@ -6,7 +6,7 @@ import Loader from '../components/Loader'
 import { Row, Col } from 'react-bootstrap'
 import { listProducts } from '../actions/productActions'
 
-const Home = () => {
+const HomeScreen = () => {
   const dispatch = useDispatch()
 
   const productList = useSelector((state) => state.productList)
@@ -37,4 +37,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default HomeScreen

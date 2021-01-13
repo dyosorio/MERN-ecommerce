@@ -176,6 +176,8 @@
 - go to index.js and import Provider from react-redux and wrap the <App /> in the Provider
 - in the backend folder: npm run dev to run de backend
 
+20. Reducers
+
 - in the src folder create a folder named reducers. Each resource of our app will have a reducer file such as products
 - productReducers.js will handle the product list
 - in store.js import productListReducer and add that state to the combineReducers through a productList. Now, refresh the page and check the redux-devtools and you'll see the productList in the state tab
@@ -204,3 +206,26 @@
   - create the action, we want to make a request to /api/products/id
   - ProductPage: clear out the useEffect, import useDispatch and useSelector
   - Now the details are coming through the server, down to redux and to the state to print out on our frontend
+
+## Adding the Shopping Cart
+
+21. Qty select and Add to Cart Button
+
+- Product page: Qty is going to be part of our component level state
+- create a handler for the add to cart button
+- create a cart page and import it to App.js to create route
+
+22. Create cart reducer and add to cart action
+
+- create the constants
+- create the reducers
+- create the cartActions
+
+23. add to cart functionality
+
+24. Remove items from cart
+
+- cart remove constant
+- card reducer: bring in the constant, add the cart remove case to the switch statement and return whatever we have in the state and the filtered out items, leaving the the removed items out.
+- cartActions: bring in the cart remove item constant, dispatch the action to a reducer. Export removeFromCart
+- CartScreen: import removeFromCart. Dispatch removeFromCart from removeFromCartHandler, passing the id
