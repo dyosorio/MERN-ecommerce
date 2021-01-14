@@ -276,3 +276,15 @@
   💡 important:
 
   > When we update soma data in a user profile, we don't want the bcrypt salt to run because it's going to crete a new hash and the user wouldn't be able to log in
+
+## Frontend user authentication & profile
+
+30. User Registration and Password Encryption. Video 43 (Login)
+
+- step 1 - Frontend - src - constant: create the userConstant. Request, success, fail, and logout.
+- step 2 - reducers: create the userReducers
+- step 3 - store: import the userLoginReducer. In the reducer combineReducers, add a userLogin equals to userLoginReducer.
+- step 4 - actions: we want a login action that's going to make the request to login and get the token.
+- step 5 - store: add userLogin to the initialState.
+
+Call the login action, pass the email and password in, make the request, and send down the state
