@@ -229,3 +229,20 @@
 - card reducer: bring in the constant, add the cart remove case to the switch statement and return whatever we have in the state and the filtered out items, leaving the the removed items out.
 - cartActions: bring in the cart remove item constant, dispatch the action to a reducer. Export removeFromCart
 - CartScreen: import removeFromCart. Dispatch removeFromCart from removeFromCartHandler, passing the id
+
+## Backend user authentication
+
+25. Clean up by using Controllers:
+
+- productRoutes cleanup: instead of having all the functionality directly in the route file, we'll have controllers that handle the functionality. Routes should just point to controller methods.
+- create a controllers folder in the backend. Create a productController file. Create and export getProduct and getProductById functions
+- productRoutes: import getProduct and getProductById. npm run server and Test in Postman
+
+26. User Authentication Endpoint
+
+- routes: create a file called userRoutes
+- controllers: create a userControllers file. Create a authUser function
+- Postman: create a new folder for users & Auth. Routes that have to do with managing users and authentication. Create a POST request to authenticate user and get token
+- server.js: add middleware in order for the authentication req.body(with email and password) to parse. This req.body will go inside the authUser function.
+- userRoute: import authUser from the userControllers file
+- server.js: import the userRoute as we did with productRoutes
