@@ -246,3 +246,33 @@
 - server.js: add middleware in order for the authentication req.body(with email and password) to parse. This req.body will go inside the authUser function.
 - userRoute: import authUser from the userControllers file
 - server.js: import the userRoute as we did with productRoutes
+
+27. Authorization
+    authentication: take an email and a password and authenticated against the database.
+    authorization: having the user access certain protected routes in the API and we do that by sending the JSON web token. When we login is going to create and sign a JSON web token with a secret key, then that token get send back to the client and we can store it in the browser so when we have to access any protected routes we can send that token in the header. check http://jwt.io/
+
+28. Generate a JSON web token
+
+- npm i jsonwebtoken
+- in the backend create a utils folder. In utils create a generateToken.js
+
+29. Custom Authentication middleware (video 40)
+
+- Crete a middleware to be able to take the generated token, once we logged in and use it to access a protected route.
+- profile, create a new request: GET /api/users/profile. This will return logged in user
+- userController: create the getUserProfile function
+- userRoutes: import getUserProfile
+- in the folder middleware, create a authMiddleware.js file. This middleware will validate the token
+- userRoute: import the protect middleware
+- authMiddleware: import expressAsyncHandler for handling any exceptions, wrap the entire protect function.
+
+30. User Registration and Password Encryption
+
+- we want to be able to create new users.
+- Postman: create a POST/api/users request.
+- userController: create and export a registerUser function.
+- userRoute: import registerUser and create a router.route post request.
+- userModel: add a middleware to encrypt the new users passwords previous saving. Note: a salt is a random string that makes the hash unpredictable.
+  💡 important:
+
+  > When we update soma data in a user profile, we don't want the bcrypt salt to run because it's going to crete a new hash and the user wouldn't be able to log in
