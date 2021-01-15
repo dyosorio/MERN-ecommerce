@@ -137,8 +137,8 @@
 - import mongoose and dotenv, because we need the MONGO_URI, import users and products from data
 - import all three models, import connectDB and connect
 - create an importData function and a destroyData function
-- to import: node backend/seeder **DIDN'T UNDERSTAND THIS**
-- to destroy: node backend/seeder -d **DIDN'T UNDERSTAND THIS**
+- to import: node backend/seeder
+- to destroy: node backend/seeder -d
 - add scripts to json.package
 - open MongoDB Compass
 
@@ -288,3 +288,57 @@
 - step 5 - store: add userLogin to the initialState.
 
 Call the login action, pass the email and password in, make the request, and send down the state
+
+31. User Login Screen Functionality
+
+- screen: create LoginScreen.js. Import the Login action from userActions.
+- components: create a FormContainer.js component
+- LoginScreen: import the FormContainer
+- App.js : create the login route to render the LoginScreen
+
+> By this point we have the action, and the reducer that's going to send down the user info state.
+
+- LoginScreen: define dispatch
+
+32. Show User in Nav Bar & Logout (video 45)
+
+- Now that we are logged in, we have our userInfo and state. Add the user name to the header and a dropdown with a link to the user profile, and a link to logout.
+- components - header: import the userLogin state from redux.
+
+💡 important:
+
+> Remember to import useDispatch (to call in actions) and useSelector (to bring in in states) whenever you want to bring in anything from redux.
+
+- Logout: create logout action in userActions, and import it to Header.js to dispatch it from the logoutHandler.
+
+33. User Register Reducer, Action & Screen
+
+- userConstants: create registerConstants.
+- userReducers: create the userRegisterReducers.
+- store: add the userRegisterReducer and add it to the reducer: combineReducers
+- userActions: create a registerAction
+- create registerScreen
+- App.js : add the registerScreen to the routes
+
+34. Update the profile Endpoint
+
+- userController: create updateUserProfile
+- userRoutes: import updateUserProfile
+
+35. Profile Screen and Get User details:
+    Get our profile data into redux to ultimately have a profile screen.
+
+- constants:create the user details constants in userConstants to get the user details.
+- userReducer: create userDetailsReducer
+- store: add userDetailsReducer to reducer = combineReducers
+- userActions: create an action to get the current user details. create getUserDetails action.
+- screens: create a profileScreen. Import he getUserDetails action.
+- App.js : add the profile Screen. Add the ProfileScreen route.
+
+36. Update User Profile: give functionality to the User Profile form.
+
+- constants: add user update constants.
+- reducers: userUpdateProfileReducer
+- store: import userUpdateProfile
+- userActions: updateUserProfile
+- ProfileScreens: import and dispatch the updateUserProfile action, from the submitHandler
