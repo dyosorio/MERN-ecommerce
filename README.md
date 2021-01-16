@@ -342,3 +342,48 @@ Call the login action, pass the email and password in, make the request, and sen
 - store: import userUpdateProfile
 - userActions: updateUserProfile
 - ProfileScreens: import and dispatch the updateUserProfile action, from the submitHandler
+
+## CheckOut Process
+
+37. shipping screen and save address
+
+- cart constants, reducers, store, cartActions, Shipping screen.
+
+38. Checkout steps components
+
+- components: CheckoutSteps.js
+
+  - step 1 - Login
+  - step 2 - Shipping
+  - step 3 - Payment
+  - step 4 - Place order
+
+- shipping screen: import CheckoutSteps
+
+39. Payment Screen and Save Payment Method
+
+- cartConstant: card save payment methods
+- cartActions: import constant and create savePaymentMethod action
+- cartReducer: create savePaymentMethod reducer
+- screen: PaymentScreen
+- App.js : import PaymentScreen and create route
+
+40. Place order screen
+
+- PlaceOrderScreen
+- App.js: import PlaceOrderScreen and create route
+
+41. Order Controller and route
+
+- Backend functionality to add an order to the database
+- backend controllers: orderController
+- backend routes: create order route
+- server.js : import orderRoutes
+
+42. create order: to be able to create an order from the placeOrderScreen
+
+- constants: orderConstants
+- reducers: orderReducers
+- store: import the orderReducers
+- actions: orderAction
+- PlaceOrderScreen:

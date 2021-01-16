@@ -6,6 +6,7 @@ import connectDB from './config/db.js'
 
 import productRoutes from './routes/productRoutes.js'
 import userRoutes from './routes/userRoutes.js'
+import orderRoutes from './routes/orderRoutes.js'
 
 //init dotenv
 dotenv.config()
@@ -27,6 +28,7 @@ app.get('/', (req, res) => {
 //mount it, for anything that goes to '/api/products' it is going to be link to productRoutes
 app.use('/api/products', productRoutes)
 app.use('/api/users', userRoutes)
+app.use('/api/orders', orderRoutes)
 
 //fallback for Not Found 404 errors
 app.use(notFound)
