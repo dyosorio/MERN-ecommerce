@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Row, Col, Image, ListGroup, Card, Button, Form } from 'react-bootstrap'
+import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
 import { useParams, useHistory } from 'react-router'
 import Rating from '../components/Rating'
 import Message from '../components/Message'
@@ -92,6 +92,9 @@ const ProductScreen = () => {
                       <Col>
                         <Form.Control
                           as='select'
+                          className='mr-sm-2'
+                          id='inlineFormCustomSelect'
+                          custom
                           value={qty}
                           onChange={(e) => setQty(e.target.value)}
                         >

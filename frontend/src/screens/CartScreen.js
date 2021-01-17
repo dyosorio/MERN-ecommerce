@@ -55,9 +55,12 @@ const CartScreen = ({ location, history }) => {
 
                   <Col md={2}>${item.price}</Col>
 
-                  <Col md={2}>
+                  <Col md={3}>
                     <Form.Control
                       as='select'
+                      className='mr-sm-2'
+                      id='inlineFormCustomSelect'
+                      custom
                       value={item.qty}
                       onChange={(e) =>
                         dispatch(

@@ -343,7 +343,7 @@ Call the login action, pass the email and password in, make the request, and sen
 - userActions: updateUserProfile
 - ProfileScreens: import and dispatch the updateUserProfile action, from the submitHandler
 
-## CheckOut Process
+## CheckOut Process 1
 
 37. shipping screen and save address
 
@@ -387,3 +387,45 @@ Call the login action, pass the email and password in, make the request, and sen
 - store: import the orderReducers
 - actions: orderAction
 - PlaceOrderScreen:
+
+## CheckOut Process 2
+
+43. Get order by ID endpoint (video 57)
+
+- backend: fetch order from the database.
+- controller: create getOrderById controller. Test in Postman
+- oderRoutes: getOrderById
+
+44. Order Details Reducer & Action: get order details from the getOrderById route
+
+- constants: ORDER_DETAILS constants
+- orderReducers: orderDetailsReducer.
+- store: add orderDetails reducer
+- orderActions: getOrderDetails
+
+45. Order Screen
+
+- screens: create the OrderScreen.js and add it to App.js
+
+💡 important:
+I got an awful error here, I couldn't deconstruct orderDetails as it was undefined. After hours of debugging I realized the problem was a typo coming from store.js, on typo on orderDetails inside the combine reducers
+
+45. Update to Paid Endpoint (video 61)
+
+- order controller: updateOrderToPaid @route GET /api/orders/:id/pay
+- order routes: router.route('/:id/pay').put(protect, updateOrderToPaid)
+
+46. Order Pay reducer and action
+
+- order constants: ORDER_PAY constants
+- order reducers: updatePayReducer
+- add the reducer to store
+- actions: payOrderAction
+
+47. Adding Paypal Payments (video 63)
+
+- add the sandbox PayPal client id in the .env file
+- server.js: add end point to the PayPal api. So when we're ready to make our payment we will hit the end point and fetch the client id.
+- order screen: dynamically add the PayPal sdk script. We want to get the order Pay from the state, import it from orderReducers
+- add the paypal buttons: install it in the front end
+  npm i react-paypal-button-v2
