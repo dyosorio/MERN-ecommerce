@@ -429,3 +429,9 @@ I got an awful error here, I couldn't deconstruct orderDetails as it was undefin
 - order screen: dynamically add the PayPal sdk script. We want to get the order Pay from the state, import it from orderReducers
 - add the paypal buttons: install it in the front end
   npm i react-paypal-button-v2
+
+48. Show orders on Profile Screen
+
+- controllers: getMyOrders
+- order routes
+- frontend flow: const, reducer, store, action, ProfileScreen
