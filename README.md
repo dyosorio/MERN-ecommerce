@@ -435,3 +435,8 @@ I got an awful error here, I couldn't deconstruct orderDetails as it was undefin
 - controllers: getMyOrders
 - order routes
 - frontend flow: const, reducer, store, action, ProfileScreen
+
+## CheckOut Process 2
+
+49. Admin middleware and get users endpoint
+50. Admin user list
