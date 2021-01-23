@@ -441,4 +441,15 @@ I got an awful error here, I couldn't deconstruct orderDetails as it was undefin
 49. Admin middleware and get users endpoint
 50. Admin user list
 51. Admin security issues
-52. Admin user delete 
+52. Admin user delete
+53. Get user by Id & update user points
+
+- backend: user controller, user routes, test in Postman
+
+54. User Edit screen and Get User Details
+
+- create screen, add it to app.js
+
+55. Update user functionality
+
+- constants, reducer, store, user action,
