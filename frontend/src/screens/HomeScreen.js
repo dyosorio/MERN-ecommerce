@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Product from '../components/Product'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
+import ProductCarousel from '../components/ProductCarousel'
 import { Row, Col } from 'react-bootstrap'
 import { listProducts } from '../actions/productActions'
 
@@ -19,6 +20,7 @@ const HomeScreen = () => {
 
   return (
     <>
+      <ProductCarousel />
       <h1>Latest Products</h1>
       {loading ? (
         <Loader />
